@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेरो पोर्टफोलियो</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        .news-item {
+            background-color: white;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .news-item h3 {
+            margin-top: 0;
+        }
+
+        .news-item a {
+            text-decoration: none;
+            color: #2980b9;
+        }
+
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>मेरो व्यक्तिगत ब्लग</h1>
+        <p>Welcome to my world – where I code, write, and share ideas.</p>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>मेरो बारेमा</h2>
+            <p>म NCIT मा अध्ययनरत छात्र हुँ, IT, DSA र प्रोग्रामिङमा गहिरो रुचि छ।</p>
+        </section>
+
+        <section id="projects">
+            <h2>परियोजनाहरू</h2>
+            <ul>
+                <li>🌐 News Blog with API</li>
+                <li>📱 Android App using Java</li>
+                <li>💻 Portfolio Website</li>
+            </ul>
+        </section>
+
+        <section id="nepali-news">
+            <h2>नेपाली समाचारहरू</h2>
+            <div id="news-container">समाचार लोड हुँदैछ...</div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 मेरो नाम | सम्पर्क: example@gmail.com
+    </footer>
+
+    <script>
+        const apiKey = '5a916bfad2860b7b70596492f714a316';
+        const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&country=np&language=ne`;
+
+        async function loadNepaliNews() {
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = '';
+
+                if (data.results && data.results.length > 0) {
+                    data.results.forEach(article => {
+                        const div = document.createElement('div');
+                        div.className = 'news-item';
+                        div.innerHTML = `
+                            <h3><a href="${article.link}" target="_blank">${article.title}</a></h3>
+                            <p>${article.description || 'विवरण उपलब्ध छैन।'}</p>
+                        `;
+                        newsContainer.appendChild(div);
+                    });
+                } else {
+                    newsContainer.innerHTML = '<p>हाल कुनै समाचार फेला परेन।</p>';
+                }
+            } catch (error) {
+                console.error('समाचार लोड गर्न त्रुटि:', error);
+                document.getElementById('news-container').innerHTML = '<p>समाचार लोड गर्न सकिएन।</p>';
+            }
+        }
+
+        // Load the news when the page loads
+        window.addEventListener('DOMContentLoaded', loadNepaliNews);
+    </script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/ae26b5f911.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bishwas Ghimire</title>
+    <style>
+        /* Reset box-sizing for all elements */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Body styles for responsiveness */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2vh 2vw;
+            background: linear-gradient(to right, #f8f8f8, #e8f0ff);
+        }
+
+        /* Heading styles */
+        h1 {
+            color: #050505;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* News item styles */
+        .news-item {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .news-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .news-item p {
+            font-size: 1rem;
+            color: #333;
+        }
+        .news-item a {
+            text-decoration: none;
+            color: #2980b9;
+        }
+
+        /* News live header style */
+        .newslive {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #eef0f1;
+            border-radius: 10px;
+            padding: 1vh 2vw;
+            font-size: 1.2rem;
+        }
+
+        /* Navigation styles */
+        nav {
+   
+    border-radius: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgba(0, 18, 51, 0.8); /* Semi-transparent background */
+    padding: 1vh 1vw;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease; /* Smooth transition for background */
+}
+nav:hover {
+    background: rgba(0, 18, 51, 1); /* Fully opaque on hover */
+}
+        nav a {
+            color: white;
+            margin: 1vh 2vw;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5vh 1vw;
+            transition: all 0.3s ease-in-out;
+        }
+        nav a:hover {
+            color: yellow;
+            transform: scale(1.1);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Search box styles */
+        #srch {
+            margin: 1vh 2vw;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 0.5vh 1vw;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        #srch:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+
+        /* Sections */
+        section {
+            padding: 3vh 2vw;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Main container with flexible layout for responsiveness */
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2vw;
+            border-radius: 20px;
+            box-shadow: 0px 5px 5px 2px rgba(0,0,0,0.2);
+            padding: 2vh 2vw;
+            background-color: #fff;
+            color: black;
+        }
+
+        /* Left and right sections */
+        .left, .right {
+            flex: 1 1 300px;
+            min-width: 280px;
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: linear-gradient(navy, black, crimson);
+            padding: 2vh 2vw;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .right {
+            padding: 2vh 2vw;
+        }
+
+        /* Image styling for responsiveness */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            border: 2px solid white;
+            box-shadow: 2px 2px 2px blue;
+            display: block;
+            margin: 1vh auto;
+        }
+
+        /* Skills styles */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        #google-news-container a:hover {
+  color: #007BFF;
+}
+
+        .skill {
+            background-color: #f0f0f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .skill:hover {
+            transform: scale(1.05);
+        }
+        .skill a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Contact and connect section styles */
+        #acm {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1vw;
+            align-items: center;
+            margin-top: 1vh;
+        }
+        #acm a {
+            margin-left: 0.5vw;
+        }
+
+        /* Project styles */
+        .project {
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            color: black;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .project h3 {
+            margin: 0 0 10px;
+        }
+        .project p {
+            font-size: 1rem;
+        }
+
+        /* News ticker styles */
+        #news-ticker {
+            overflow: hidden;
+            background: #004e92;
+            color: white;
+            border-radius: 10px;
+            padding: 1vh 1vw;
+            position: relative;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+        }
+        #news-ticker .news-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Responsive adjustments for screens smaller than 768px */
+        @media (max-width: 768px) {
+            body {
+                padding: 2vh 4vw;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 1vh 0;
+            }
+            #news-ticker {
+                font-size: 0.9rem;
+            }
+            .main {
+                flex-direction: column;
+            }
+            .first {
+                flex-direction: column;
+                gap: 2vh;
+            }
+            .left, .right {
+                width: 100%;
+            }
+            h1, h2, h3 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#post">Post</a>
+        <a href="#project">Projects</a>
+        <a href="#about">About Me</a>
+        <input type="search" id="srch" placeholder="Search" />
+    </nav>
+
+    <section id="home" style="padding: 20px; background-color: #f5f5f5;">
+        <h2 style="font-size: 24px; margin-bottom: 10px;">📰TOP-News</h2>
+        <div id="google-news-container">Loading...</div>
+</section>
+
+    <section id="post">
+        <h2>Latest Post</h2>
+        <p>No recent posts available. Stay tuned!</p>
+    </section>
+
+    <section id="project">
+        <h2>Major Projects</h2>
+
+        <div class="project">
+            <h3>Face Recognition System [<a href="https://luxand.cloud/get-facial-recognition-api/?utm_source=google&utm_medium=cpc-face-recognition&utm_campaign=face-recognition&gad_source=1&gad_campaignid=10492842641&gbraid=0AAAAACTZIE2wad_64Kinf5JZ3OEv2nWjY&gclid=CjwKCAjwruXBBhArEiwACBRtHYcekdQrM6Ye0uk1eTspdztTC_coSiq9CNLg_Jo-o-hyq2HftZEInRoCS88QAvD_BwE">Link</a>]</h3>
+            <p>A project demonstrating facial recognition with AI techniques.</p>
+        </div>
+
+        <div class="project">
+            <h3>AI Chatbot using Python [<a href="https://deepai.org/chat">Link</a>]</h3>
+            <p>An AI-powered chatbot implemented in Python for natural language interactions.</p>
+        </div>
+
+        <div class="project">
+            <h3>Online Voting System [<a href="https://electionbuddy.com/features/online-voting/">Link</a>]</h3>
+            <p>A secure and transparent online voting platform to facilitate digital elections with ease.</p>
+        </div>
+
+        <div class="project">
+            <h3>Weather Forecast App [<a href="https://www.accuweather.com/en/np/kathmandu/241809/hourly-weather-forecast/241809">Weather</a>]</h3>
+            <p>An app providing real-time weather updates and forecasts with a user-friendly interface.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="main">
+            <div class="left">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkSirn4-uoswXMTBRP0znzPg3pXaVvgBziQ&s" alt="Bishwas Ghimire" />
+                <h2 id="name">Bishwas Ghimire</h2>
+                <p id="post">Student<br />NCIT College</p>
+                <a href="https://ncit.edu.np/">
+                    <img src="https://theedunepal.ap-south-1.linodeobjects.com/bachelorfairuploads/clients/ncit/logo/nepal_college_of_informationpng_20220608011130.png" id="imag" style="width: 100px; height: 100px; border-radius: 10px"/>
+                </a>
+                <p class="para">Enthusiastic and optimistic, always embracing new challenges with a positive mindset...</p>
+            </div>
+            <div class="right">
+                <h1>Information</h1>
+                <hr />
+                <div class="first">
+                    <div class="email">
+                        <h3>Email</h3>
+                        <p>bishwasghimire2060@gmail.com</p>
+                        <p><a href="mailto:bishwasghimire2060@gmail.com" id="hl">Mail Me</a></p>
+                    </div>
+                    <div class="phone">
+                        <h3>Phone</h3>
+                        <p>+9779866342404</p>
+                    </div>
+                    <div class="address">
+                        <h3>Address</h3>
+                        <p>Chitwan, Nepal</p>
+                    </div>
+                </div>
+                <h1>Skills</h1>
+                <hr />
+                <div class="skills">
+                    <div class="skill"><a href="https://en.wikipedia.org/wiki/C">C</a></div>
+                    <div class="skill"><a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a></div>
+                    <div class="skill"><a href="https://en.wikipedia.org/wiki/Java_(programming_language)">JAVA</a></div>
+                    <div class="skill"><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></div>
+                    <div class="skill"><a href="https://en.wikipedia.org/wiki/CSS">CSS</a></div>
+                    <div class="skill"><a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a></div>
+                </div>
+                <br />
+                <h1>Connect Me</h1>
+                <hr />
+                <div id="acm">
+                    <i class="fa-brands fa-facebook fa-beat" style="color: #196dae;"></i>
+                    <a href="https://www.facebook.com/bishwas.ghimire.144/" id="hl" target="_blank">FACEBOOK</a>
+                    <i class="fa-brands fa-instagram fa-beat" style="color: red;"></i>
+                    <a href="https://www.instagram.com/bishwas.ghimire.144/?hl=en" target="_blank" id="hl">INSTAGRAM</a>
+                    <i class="fa-brands fa-youtube fa-bounce" style="color: #c1253c;"></i>
+                    <a href="https://www.youtube.com/channel/UCHacpeYvSWuBX8zaYjvrQhg" target="_blank" id="h1">YOUTUBE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News API Script -->
+    <script>
+  async function loadGoogleNews() {
+    const rssUrl = 'https://news.google.com/rss/search?q=Nepal&hl=ne&gl=NP&ceid=NP:ne';
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      const container = document.getElementById('google-news-container');
+      container.innerHTML = '';
+
+      data.items.slice(0, 6).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'news-item';
+        div.style.marginBottom = '15px';
+        div.innerHTML = `
+          <h3 style="margin: 5px 0;">
+            <a href="${item.link}" target="_blank" style="text-decoration: none; color: #2c3e50;">
+              ${item.title}
+            </a>
+          </h3>
+          <small>${new Date(item.pubDate).toLocaleString()}</small>
+          <p style="margin: 5px 0; color: #555;">${item.description.split(" ").slice(0, 20).join(" ")}...</p>
+        `;
+        container.appendChild(div);
+      });
+    } catch (error) {
+      document.getElementById('google-news-container').innerHTML = 'Failed to load news';
+      console.error(error);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', loadGoogleNews);
+</script>
+</body>
+</html>
